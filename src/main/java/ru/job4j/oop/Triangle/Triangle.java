@@ -28,7 +28,8 @@ public class Triangle {
     public double area() {
         double result = -1;
         if (this.exists(this.abLength, this.acLength, this.bcLength)) {
-            result = Math.sqrt(this.halfPerimeter() * (this.halfPerimeter() - this.abLength) * (this.halfPerimeter() - this.acLength) * (this.halfPerimeter() - this.bcLength));
+            double perimeter = this.halfPerimeter();
+            result = Math.sqrt(perimeter * (perimeter - this.abLength) * (perimeter - this.acLength) * (perimeter - this.bcLength));
         }
         return result;
     }
