@@ -1,4 +1,4 @@
-package ru.job4j.oop.inheritance;
+package ru.job4j.oop.inheritance.profession;
 
 public class Chemist extends Engineer {
     private boolean hasSpecialKnowledge;
