@@ -13,6 +13,15 @@ public class Item {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateTime=" + dateTime +
+                '}';
+    }
+
     public Item(int id, String name) {
         this.id = id;
         this.name = name;
