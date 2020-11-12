@@ -1,6 +1,6 @@
 package ru.job4j.pojo;
 
-public class Labrary {
+public class Library {
     public static void main(String[] args) {
         Book[] books = {
                 new Book("Peter Pen", (short)100),
