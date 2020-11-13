@@ -6,6 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class LicenseTest {
+
     @Test
     public void eqName() {
         License first = new License();
@@ -14,5 +15,4 @@ public class LicenseTest {
         second.setCode("audio");
         assertThat(first, is(second));
     }
-
 }
