@@ -24,8 +24,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item\n" +
-                "{\n" +
+        return "Item {\n" +
                 "\tid = " + id + System.lineSeparator() +
                 "\tname = \"" + name + "\"\n" +
                 "}";

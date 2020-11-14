@@ -29,7 +29,7 @@ public class Tracker {
         Item[] result = new Item[size];
         short index = 0;
         for (int i = 0; i < size; i++) {
-            if (items[i].getName() == key) {
+            if (items[i].getName().equals(key)) {
                 result[index++] = items[i];
             }
         }
@@ -54,5 +54,16 @@ public class Tracker {
             }
         }
         return -1;
+    }
+
+    public boolean delete(int id) {
+        boolean result = false;
+        int index = indexOf(id);
+        if (index != -1) {
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
+            items[size - 1] = null;
+            result = true;
+        }
+        return result;
     }
 }
