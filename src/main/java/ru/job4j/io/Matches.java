@@ -8,14 +8,17 @@ public class Matches {
         byte matchesRemain = 11;
         System.out.printf("There are %d matches on the table.\n", matchesRemain);
         while (running) {
-            byte picked = getPicked("How many matches pick the first player up?\n");
+            /**
+             * First player's turn
+             */
+            byte picked = getPicked("first");
             matchesRemain = matchesRemain(matchesRemain, picked);
-
-            if (matchesRemain == 0) {
-                running = false;
-                running = checkWin(matchesRemain, running, "first");
-            }else {
-                picked = getPicked("How many matches pick the second player up?\n");
+            running = checkWin(matchesRemain, running, "first");
+            /**
+             * If the game has to carry on then second player's turn
+             */
+            if (running) {
+                picked = getPicked("second");
                 matchesRemain = matchesRemain(matchesRemain, picked);
                 running = checkWin(matchesRemain, running, "second");
             }
@@ -25,7 +28,7 @@ public class Matches {
     private static boolean checkWin(byte matchesRemain, boolean running, String whoWon) {
         if (matchesRemain == 0) {
             running = false;
-            System.out.printf("The player %s have won!", whoWon);
+            System.out.printf("The player %s has won!", whoWon);
         }
         return running;
     }
@@ -36,12 +39,12 @@ public class Matches {
         return matchesRemain;
     }
 
-    private static byte getPicked(String prompt) {
+    private static byte getPicked(String player) {
         byte picked;
         boolean takingIsCorrect;
         Scanner input = new Scanner(System.in);
         do {
-            System.out.printf(prompt);
+            System.out.printf("How many matches picked the %s player up?\n", player);
             picked = Byte.valueOf(input.nextLine());
             takingIsCorrect = picked > 3 || picked < 1;
             if (takingIsCorrect) {
