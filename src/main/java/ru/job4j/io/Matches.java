@@ -50,6 +50,4 @@ public class Matches {
         } while (takingIsCorrect);
         return picked;
     }
-
-
 }
