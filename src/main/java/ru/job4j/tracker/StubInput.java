@@ -1,11 +1,11 @@
 package ru.job4j.tracker;
 
 public class StubInput implements Input {
-    public String askStr(String question) {
+    public String requestStringInput(String prompt) {
         return null;
     }
 
-    public int askInt(String question) {
+    public int requestIntInput(String prompt) {
         return 0;
     }
 }
