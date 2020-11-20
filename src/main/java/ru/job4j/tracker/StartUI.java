@@ -9,22 +9,22 @@ public class StartUI {
             int selection = consoleInput.requestIntInput("Select:");
             switch (selection) {
                 case 0:
-                    Add(tracker);
+                    Add(tracker, consoleInput);
                     break;
                 case 1:
                     showAllItems(tracker);
                     break;
                 case 2:
-                    editItem(tracker);
+                    editItem(tracker, consoleInput);
                     break;
                 case 3:
-                    deleteItem(tracker);
+                    deleteItem(tracker, consoleInput);
                     break;
                 case 4:
-                    findItemById(tracker);
+                    findItemById(tracker, consoleInput);
                     break;
                 case 5:
-                    findItemsByName(tracker);
+                    findItemsByName(tracker, consoleInput);
                     break;
                 case 6:
                     run = false;
@@ -34,8 +34,7 @@ public class StartUI {
         }
     }
 
-    private void findItemsByName(Tracker tracker) {
-        Input consoleInput = new ConsoleInput();
+    private void findItemsByName(Tracker tracker, Input consoleInput) {
         String name = consoleInput.requestStringInput("Enter the item's name:");
         Item[] items = tracker.findByName(name);
         if (items.length > 0) {
@@ -47,8 +46,7 @@ public class StartUI {
         }
     }
 
-    private void findItemById(Tracker tracker) {
-        Input consoleInput = new ConsoleInput();
+    private void findItemById(Tracker tracker, Input consoleInput) {
         int id = consoleInput.requestIntInput("Enter the item's ID:");
         Item item = tracker.findById(id);
         if (item != null) {
@@ -58,8 +56,7 @@ public class StartUI {
         }
     }
 
-    private void deleteItem(Tracker tracker) {
-        Input consoleInput = new ConsoleInput();
+    private void deleteItem(Tracker tracker, Input consoleInput) {
         int id = consoleInput.requestIntInput("Enter the deleted item's ID:");
         if (tracker.delete(id)) {
             System.out.printf("The element with ID %d has been deleted.\n", id);
@@ -68,8 +65,7 @@ public class StartUI {
         }
     }
 
-    private void editItem(Tracker tracker) {
-        Input consoleInput = new ConsoleInput();
+    private void editItem(Tracker tracker, Input consoleInput) {
         int id = consoleInput.requestIntInput("Enter the edited item's ID:");
         String name = consoleInput.requestStringInput("Enter new item's name:");
         Item item = new Item(name);
@@ -92,9 +88,8 @@ public class StartUI {
         }
     }
 
-    private void Add(Tracker tracker) {
+    private void Add(Tracker tracker, Input consoleInput) {
         System.out.println("=== Creating a new item ====");
-        Input consoleInput = new ConsoleInput();
         String name = consoleInput.requestStringInput("Enter a name:");
         Item item = new Item(name);
         item = tracker.add(item);
