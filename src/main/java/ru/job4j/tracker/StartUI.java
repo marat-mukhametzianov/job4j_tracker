@@ -88,7 +88,7 @@ public class StartUI {
         }
     }
 
-    private static void Add(Tracker tracker, Input consoleInput) {
+    public static void Add(Tracker tracker, Input consoleInput) {
         System.out.println("=== Creating a new item ====");
         String name = consoleInput.requestStringInput("Enter a name:");
         Item item = new Item(name);
