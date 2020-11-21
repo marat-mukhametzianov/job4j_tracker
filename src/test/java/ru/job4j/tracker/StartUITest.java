@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
@@ -25,5 +26,17 @@ public class StartUITest {
         for (int i = 0; i < 3; i++) {
             assertThat(createdItemArray[i].getName(), is(expectedItemArray[i].getName()));
         }
+    }
+
+    @Test
+    public void whenDeleteOnlyItem() {
+        Item item = new Item();
+        item.setName("new item");
+        Tracker tracker = new Tracker();
+        tracker.add(item);
+        String[] answer = {String.valueOf(item.getId())};
+        Input input = new StubInput(answer);
+        StartUI.deleteItem(tracker, input);
+        Assert.assertEquals(null, tracker.findById(item.getId()));
     }
 }
