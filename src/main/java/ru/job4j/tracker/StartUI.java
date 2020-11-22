@@ -2,35 +2,14 @@ package ru.job4j.tracker;
 
 public class StartUI {
 
-    public void init(Input consoleInput, Tracker tracker) {
+    public void init(Input consoleInput, Tracker tracker, IUserAction[] actions) {
         boolean run = true;
         while (run) {
-            this.showMenu();
+            this.showMenu(actions);
+            int selected = consoleInput.requestIntInput("Select:");
+            IUserAction action = actions[selected];
+            run = action.execute(consoleInput, tracker);
             int selection = consoleInput.requestIntInput("Select:");
-            switch (selection) {
-                case 0:
-                    add(tracker, consoleInput);
-                    break;
-                case 1:
-                    showAllItems(tracker);
-                    break;
-                case 2:
-                    editItem(tracker, consoleInput);
-                    break;
-                case 3:
-                    deleteItem(tracker, consoleInput);
-                    break;
-                case 4:
-                    findItemById(tracker, consoleInput);
-                    break;
-                case 5:
-                    findItemsByName(tracker, consoleInput);
-                    break;
-                case 6:
-                    run = false;
-                    break;
-            }
-
         }
     }
 
@@ -59,7 +38,7 @@ public class StartUI {
     public static void deleteItem(Tracker tracker, Input consoleInput) {
         int id = consoleInput.requestIntInput("Enter the deleted item's ID:");
         if (tracker.delete(id)) {
-            System.out.printf("The element with ID %d has been deleted.\n", id);
+            System.out.printf("The element with ID %d has been deleted." + System.lineSeparator(), id);
         } else {
             System.out.println("Apparently, there is no element with the ID.");
         }
@@ -70,7 +49,7 @@ public class StartUI {
         String name = consoleInput.requestStringInput("Enter new item's name:");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.printf("The element with ID %d has been updated.\n", id);
+            System.out.printf("The element with ID %d has been updated." + System.lineSeparator(), id);
         } else {
             System.out.println("Apparently, there is no element with the ID.");
         }
@@ -84,7 +63,7 @@ public class StartUI {
                 System.out.println(item);
             }
         } else {
-            System.out.println("There are not available records.\n");
+            System.out.println("There are not available records." + System.lineSeparator());
         }
     }
 
@@ -97,26 +76,17 @@ public class StartUI {
         System.out.println(item);
     }
 
-    private void showMenu() {
-        String[] menuItems = {
-            "MENU.",
-            "0. Add",
-            "1. Show all items",
-            "2. Edit item",
-            "3. Delete item",
-            "4. Find item by ID",
-            "5. Find items by name",
-            "6. Exit program"
-        };
-        System.out.println(System.lineSeparator());
-        for (int i = 0; i < menuItems.length; i++) {
-            System.out.println(menuItems[i]);
+    private void showMenu(IUserAction[] actions) {
+        System.out.println("MENU.");
+        for (int index = 0; index < actions.length; index++) {
+            System.out.println(index + ". " + actions[index].name());
         }
     }
 
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(input, tracker);
+        IUserAction[] actions = {new CreateAction()}
+        new StartUI().init(input, tracker, actions);
     }
 }
