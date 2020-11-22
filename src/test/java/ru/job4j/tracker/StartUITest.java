@@ -9,22 +9,15 @@ import static org.junit.Assert.*;
 public class StartUITest {
 
     @Test
-    public void whenAddThreeItems() {
-        String[] answers = {"item_1", "item_2", "item_3"};
+    public void whenAdd() {
+        String[] answers = {"item_1"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
         StartUI.add(tracker, input);
-        StartUI.add(tracker, input);
-        StartUI.add(tracker, input);
         Item[] createdItemArray = tracker.findAll();
-        Item[] expectedItemArray = new Item[3];
+        Item expectedItem = new Item("item_1");
         for (int i = 0; i < 3; i++) {
-            Item item = new Item("item_" + (i + 1));
-            item.setId(i + 1);
-            expectedItemArray[i] = item;
-        }
-        for (int i = 0; i < 3; i++) {
-            assertThat(createdItemArray[i].getName(), is(expectedItemArray[i].getName()));
+            assertThat(createdItemArray[0].getName(), is(expectedItem.getName()));
         }
     }
 
