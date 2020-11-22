@@ -13,9 +13,9 @@ public class StartUITest {
         String[] answers = {"item_1", "item_2", "item_3"};
         Input input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI.Add(tracker, input);
-        StartUI.Add(tracker, input);
-        StartUI.Add(tracker, input);
+        StartUI.add(tracker, input);
+        StartUI.add(tracker, input);
+        StartUI.add(tracker, input);
         Item[] createdItemArray = tracker.findAll();
         Item[] expectedItemArray = new Item[3];
         for (int i = 0; i < 3; i++) {
