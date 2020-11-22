@@ -16,9 +16,7 @@ public class StartUITest {
         StartUI.add(tracker, input);
         Item[] createdItemArray = tracker.findAll();
         Item expectedItem = new Item("item_1");
-        for (int i = 0; i < 3; i++) {
-            assertThat(createdItemArray[0].getName(), is(expectedItem.getName()));
-        }
+        assertThat(createdItemArray[0].getName(), is(expectedItem.getName()));
     }
 
     @Test
