@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public interface Input {
+public interface IInput {
     String requestStringInput(String prompt);
     int requestIntInput(String prompt);
 }

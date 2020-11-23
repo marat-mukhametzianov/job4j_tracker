@@ -2,6 +2,9 @@ package ru.job4j.tracker;
 
 import org.junit.Assert;
 import org.junit.Test;
+import ru.job4j.tracker.actions.CreateAction;
+import ru.job4j.tracker.actions.DeleteAction;
+import ru.job4j.tracker.actions.EditAction;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
@@ -11,23 +14,33 @@ public class StartUITest {
     @Test
     public void whenAdd() {
         String[] answers = {"item_1"};
-        Input input = new StubInput(answers);
+        IInput input = new StubInput(answers);
         Tracker tracker = new Tracker();
-        StartUI.add(tracker, input);
-        Item[] createdItemArray = tracker.findAll();
-        Item expectedItem = new Item("item_1");
-        assertThat(createdItemArray[0].getName(), is(expectedItem.getName()));
+        new CreateAction().execute(input,tracker);
+        Item[] allItems = tracker.findAll();
+        assertThat(allItems[0].getName(), is("item_1"));
     }
 
     @Test
     public void whenDeleteOnlyItem() {
         Item item = new Item();
-        item.setName("new item");
+        item.setName("item_1");
         Tracker tracker = new Tracker();
         tracker.add(item);
         String[] answer = {String.valueOf(item.getId())};
-        Input input = new StubInput(answer);
-        StartUI.deleteItem(tracker, input);
-        Assert.assertEquals(null, tracker.findById(item.getId()));
+        IInput input = new StubInput(answer);
+        new DeleteAction().execute(input, tracker);
+        assertNull(tracker.findById(item.getId()));
+    }
+
+    @Test
+    public void replaceItemId1() {
+        Item item = new Item("item_1");
+        Tracker tracker = new Tracker();
+        tracker.add(item);
+        String[] answers = {String.valueOf(item.getId()), "item_item"};
+        IInput input = new StubInput(answers);
+        new EditAction().execute(input, tracker);
+        assertThat(tracker.findById(Integer.parseInt(answers[0])).getName(), is("item_item"));
     }
 }

@@ -1,79 +1,17 @@
 package ru.job4j.tracker;
 
+import ru.job4j.tracker.actions.*;
+
 public class StartUI {
 
-    public void init(Input consoleInput, Tracker tracker, IUserAction[] actions) {
+    public void init(IInput consoleInput, Tracker tracker, IUserAction[] actions) {
         boolean run = true;
         while (run) {
             this.showMenu(actions);
             int selected = consoleInput.requestIntInput("Select:");
             IUserAction action = actions[selected];
             run = action.execute(consoleInput, tracker);
-            int selection = consoleInput.requestIntInput("Select:");
         }
-    }
-
-    public static void findItemsByName(Tracker tracker, Input consoleInput) {
-        String name = consoleInput.requestStringInput("Enter the item's name:");
-        Item[] items = tracker.findByName(name);
-        if (items.length > 0) {
-            for (byte i = 0; i < items.length; i++) {
-                System.out.println(items[i]);
-            }
-        } else {
-            System.out.println("Apparently, there are no elements with the name.");
-        }
-    }
-
-    public static void findItemById(Tracker tracker, Input consoleInput) {
-        int id = consoleInput.requestIntInput("Enter the item's ID:");
-        Item item = tracker.findById(id);
-        if (item != null) {
-            System.out.println(item);
-        } else {
-            System.out.println("Apparently, there is no element with the ID.");
-        }
-    }
-
-    public static void deleteItem(Tracker tracker, Input consoleInput) {
-        int id = consoleInput.requestIntInput("Enter the deleted item's ID:");
-        if (tracker.delete(id)) {
-            System.out.printf("The element with ID %d has been deleted." + System.lineSeparator(), id);
-        } else {
-            System.out.println("Apparently, there is no element with the ID.");
-        }
-    }
-
-    public static void editItem(Tracker tracker, Input consoleInput) {
-        int id = consoleInput.requestIntInput("Enter the edited item's ID:");
-        String name = consoleInput.requestStringInput("Enter new item's name:");
-        Item item = new Item(name);
-        if (tracker.replace(id, item)) {
-            System.out.printf("The element with ID %d has been updated." + System.lineSeparator(), id);
-        } else {
-            System.out.println("Apparently, there is no element with the ID.");
-        }
-    }
-
-    public static void showAllItems(Tracker tracker) {
-        System.out.println("=== All available items ====");
-        Item[] items = tracker.findAll();
-        if (items.length > 0) {
-            for (Item item : items) {
-                System.out.println(item);
-            }
-        } else {
-            System.out.println("There are not available records." + System.lineSeparator());
-        }
-    }
-
-    public static void add(Tracker tracker, Input consoleInput) {
-        System.out.println("=== Creating a new item ====");
-        String name = consoleInput.requestStringInput("Enter a name:");
-        Item item = new Item(name);
-        item = tracker.add(item);
-        System.out.println("Item has been added successfully.");
-        System.out.println(item);
     }
 
     private void showMenu(IUserAction[] actions) {
@@ -84,9 +22,17 @@ public class StartUI {
     }
 
     public static void main(String[] args) {
-        Input input = new ConsoleInput();
+        IInput input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        IUserAction[] actions = {new CreateAction()}
+        IUserAction[] actions = {
+            new CreateAction(),
+            new ShowAllItemsAction(),
+            new EditAction(),
+            new FindItemByIdAction(),
+            new FindItemsByNameAction(),
+            new DeleteAction(),
+            new ExitAction()
+        };
         new StartUI().init(input, tracker, actions);
     }
 }
