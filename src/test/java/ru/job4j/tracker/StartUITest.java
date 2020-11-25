@@ -38,6 +38,4 @@ public class StartUITest {
         new StartUI().init(stubInput, tracker, actions);
         assertThat(tracker.findAll().length, is(0));
     }
-
-
 }
