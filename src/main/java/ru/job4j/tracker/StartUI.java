@@ -1,8 +1,17 @@
 package ru.job4j.tracker;
 
 import ru.job4j.tracker.actions.*;
+import ru.job4j.tracker.input.ConsoleInput;
+import ru.job4j.tracker.input.IInput;
+import ru.job4j.tracker.output.ConsoleOutput;
+import ru.job4j.tracker.output.IOutput;
 
 public class StartUI {
+    private final IOutput out;
+
+    public StartUI(IOutput out) {
+        this.out = out;
+    }
 
     public void init(IInput consoleInput, Tracker tracker, IUserAction[] actions) {
         boolean run = true;
@@ -15,17 +24,18 @@ public class StartUI {
     }
 
     private void showMenu(IUserAction[] actions) {
-        System.out.println("MENU.");
+        out.println("MENU.");
         for (int index = 0; index < actions.length; index++) {
-            System.out.println(index + ". " + actions[index].name());
+            out.println(index + ". " + actions[index].name());
         }
     }
 
     public static void main(String[] args) {
-        IInput input = new ConsoleInput();
+        IOutput output = new ConsoleOutput();
+        IInput input = new ConsoleInput(output);
         Tracker tracker = new Tracker();
         IUserAction[] actions = {
-            new CreateAction(),
+            new CreateAction(output),
             new ShowAllItemsAction(),
             new EditAction(),
             new FindItemByIdAction(),
@@ -33,6 +43,6 @@ public class StartUI {
             new DeleteAction(),
             new ExitAction()
         };
-        new StartUI().init(input, tracker, actions);
+        new StartUI(output).init(input, tracker, actions);
     }
 }
