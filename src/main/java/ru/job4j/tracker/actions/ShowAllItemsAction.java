@@ -3,8 +3,15 @@ package ru.job4j.tracker.actions;
 import ru.job4j.tracker.input.IInput;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.output.IOutput;
 
 public class ShowAllItemsAction implements IUserAction {
+    private final IOutput out;
+
+    public ShowAllItemsAction(IOutput out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "Show all items;";
@@ -12,14 +19,14 @@ public class ShowAllItemsAction implements IUserAction {
 
     @Override
     public boolean execute(IInput input, Tracker tracker) {
-        System.out.println("=== All available items ====");
+        out.println("=== All available items ====");
         Item[] items = tracker.findAll();
         if (items.length > 0) {
             for (Item item : items) {
-                System.out.println(item);
+                out.println(item);
             }
         } else {
-            System.out.println("There are not available records." + System.lineSeparator());
+            out.println("There are not available records.");
         }
         return true;
     }

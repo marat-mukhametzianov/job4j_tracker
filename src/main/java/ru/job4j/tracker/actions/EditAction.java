@@ -3,8 +3,15 @@ package ru.job4j.tracker.actions;
 import ru.job4j.tracker.input.IInput;
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.output.IOutput;
 
 public class EditAction implements IUserAction {
+    private final IOutput out;
+
+    public EditAction(IOutput out) {
+        this.out = out;
+    }
+
     @Override
     public String name() {
         return "Edit an item by ID;";
@@ -12,14 +19,14 @@ public class EditAction implements IUserAction {
 
     @Override
     public boolean execute(IInput input, Tracker tracker) {
-        System.out.println("=== Editing in progress ====");
+        out.println("=== Editing in progress ====");
         int id = input.requestIntInput("Enter the edited item's ID:");
         String name = input.requestStringInput("Enter new item's name:");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            System.out.printf("The element with ID %d has been updated." + System.lineSeparator(), id);
+            out.println("The element with ID " + id + " has been updated." + System.lineSeparator());
         } else {
-            System.out.println("Apparently, there is no element with the ID.");
+            out.println("Apparently, there is no element with the ID.");
         }
         return true;
     }

@@ -30,9 +30,9 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item {\n" +
+        return "Item {" +System.lineSeparator() +
                 "\tid = " + id + System.lineSeparator() +
-                "\tname = \"" + name + "\"\n" +
+                "\tname = \"" + name + "\""+ System.lineSeparator() +
                 "}";
     }
 }

@@ -24,7 +24,7 @@ public class CreateAction implements IUserAction {
         String name = input.requestStringInput("Enter a name:");
         Item item = new Item(name);
         tracker.add(item);
-        System.out.println("Item has been added successfully.");
+        out.println("Item has been added successfully.");
         return true;
     }
 }
