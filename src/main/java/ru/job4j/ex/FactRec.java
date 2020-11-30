@@ -1,9 +1,9 @@
 package ru.job4j.ex;
 
 public class FactRec {
-    public static int calc(int n) throws IllegalArgumentException {
+    public static int calc(int n) throws Exception {
         if (n < 0) {
-            throw new IllegalArgumentException("The parameter is less than a nought.");
+            throw new Exception("The parameter is less than a nought.");
         }
         if (n == 1 || n == 0) {
             return 1;
@@ -12,7 +12,12 @@ public class FactRec {
     }
 
     public static void main(String[] args) {
-        int result = calc(4);
+        int result = 0;
+        try {
+            result = calc(-1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println(result);
     }
 }
