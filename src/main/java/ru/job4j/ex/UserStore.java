@@ -6,6 +6,7 @@ public class UserStore {
         for (int i = 0; i < users.length; i++) {
             if (users[i].getUsername().equals(login)) {
                 result = users[i];
+                break;
             }
         }
         if (result == null) {
@@ -29,15 +30,13 @@ public class UserStore {
         User user = null;
         try {
             user = findUser(users, "Petr");
-        } catch (UserNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
             if (validate(user)) {
                 System.out.println("This user has an access.");
             }
         } catch (UserInvalidException e) {
             e.printStackTrace();
-        }
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
+        };
     }
 }
