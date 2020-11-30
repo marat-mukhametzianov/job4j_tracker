@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import ru.job4j.tracker.actions.*;
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.IInput;
+import ru.job4j.tracker.input.ValidInput;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.IOutput;
 
@@ -18,6 +19,10 @@ public class StartUI {
         while (run) {
             this.showMenu(actions);
             int selected = consoleInput.requestIntInput("Select:");
+            if (selected < 0 || selected >= actions.length) {
+                out.println("Wrong selected item. It can be 0 through " + (actions.length - 1));
+                continue;
+            }
             IUserAction action = actions[selected];
             run = action.execute(consoleInput, tracker);
         }
@@ -32,7 +37,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         IOutput output = new ConsoleOutput();
-        IInput input = new ConsoleInput(output);
+        IInput input = new ValidInput(output);
         Tracker tracker = new Tracker();
         IUserAction[] actions = {
             new CreateAction(output),

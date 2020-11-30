@@ -9,6 +9,12 @@ public class ConsoleInput implements IInput {
     private Scanner scanner = new Scanner(System.in);
     private IOutput output;
 
+    public IOutput getOutput() {
+        return output;
+    }
+    public ConsoleInput() {
+    }
+
     public ConsoleInput(IOutput output) {
         this.output = output;
     }
@@ -17,13 +23,14 @@ public class ConsoleInput implements IInput {
     public String requestStringInput(String prompt) {
         output.println(prompt);
         String result = scanner.nextLine();
-        //return scanner.nextLine();
         return result;
     }
 
     @Override
     public int requestIntInput(String prompt) {
         output.println(prompt);
-        return Integer.parseInt(scanner.nextLine());
+        int iii = Integer.parseInt(scanner.nextLine());
+        return iii;
+        ///return Integer.parseInt(scanner.nextLine());
     }
 }
