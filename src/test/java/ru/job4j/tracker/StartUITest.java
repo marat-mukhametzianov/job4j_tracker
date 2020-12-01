@@ -16,6 +16,22 @@ public class StartUITest {
     private String ns = System.lineSeparator();
 
     @Test
+    public void whenInvalidExit() {
+        IOutput output = new StubOutput();
+        String[] menuItems = {"10", "0"};
+        IInput input = new StubInput(menuItems);
+        Tracker tracker = new Tracker();
+        IUserAction[] actions = {new ExitAction()};
+        new StartUI(output).init(input, tracker, actions);
+        assertThat(output.toString(), is(   "MENU." + ns +
+                                            "0. Exit." + ns +
+                                            "Wrong selected item. It can be 0 through " + (actions.length - 1) + ns +
+                                            "MENU." + ns +
+                                            "0. Exit." + ns
+                                        ));
+    }
+
+    @Test
     public void whenCreateAction() {
         String[] answers = {"0", "item_1", "1"};
         Tracker tracker = new Tracker();
