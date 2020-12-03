@@ -37,7 +37,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         IOutput output = new ConsoleOutput();
-        IInput input = new ValidInput(output);
+        IInput input = new ValidInput(output, new ConsoleInput(output));
         Tracker tracker = new Tracker();
         IUserAction[] actions = {
             new CreateAction(output),

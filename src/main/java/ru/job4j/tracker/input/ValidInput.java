@@ -3,10 +3,18 @@ package ru.job4j.tracker.input;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.IOutput;
 
-public class ValidInput extends ConsoleInput {
+public class ValidInput implements IInput {
+    private final IOutput out;
+    private final IInput input;
 
-    public ValidInput(IOutput output) {
-        super(output);
+    public ValidInput(IOutput out, IInput input) {
+        this.out = out;
+        this.input = input;
+    }
+
+    @Override
+    public String requestStringInput(String prompt) {
+        return input.requestStringInput(prompt);
     }
 
     @Override
@@ -15,10 +23,10 @@ public class ValidInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.requestIntInput(prompt);
+                value = input.requestIntInput(prompt);
                 invalid = false;
             } catch (NumberFormatException numberFormatException) {
-                super.getOutput().println("Try to input the valid number.");
+                out.println("Try to input the valid number.");
             }
         } while (invalid);
         return value;
