@@ -15,5 +15,4 @@ public class PriorityLineTest {
         Task takenTask = priorityLine.take();
         assertThat(takenTask.getDescription(), is("urgent"));
     }
-
 }
