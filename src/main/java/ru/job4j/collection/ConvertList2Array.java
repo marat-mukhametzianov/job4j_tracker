@@ -24,7 +24,7 @@ public class ConvertList2Array {
         for (int item : list) {
             result[row][cell] = item;
             cell++;
-            if (cell == 3) {
+            if (cell == numberOfCells) {
                 cell = 0;
                 row++;
             }
