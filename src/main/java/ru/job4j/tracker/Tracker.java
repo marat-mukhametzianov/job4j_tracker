@@ -41,7 +41,7 @@ public class Tracker {
         for (Item element : items) {
             if (element.getId() == id) {
                 item.setId(id);
-                int index = items.indexOf(element);
+                int index = indexOf(id);
                 items.set(index, item);
                 result = true;
                 break;
@@ -54,12 +54,21 @@ public class Tracker {
         boolean result = false;
         for (Item element : items) {
             if (element.getId() == id) {
-                int index = items.indexOf(element);
+                int index = indexOf(id);
                 items.remove(index);
                 result = true;
                 break;
             }
         }
         return result;
+    }
+
+    private int indexOf(int id) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).getId() == id) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
