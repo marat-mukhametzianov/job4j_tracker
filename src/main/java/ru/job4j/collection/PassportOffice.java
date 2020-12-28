@@ -17,11 +17,6 @@ public class PassportOffice {
     }
 
     public Citizen get (String passport) {
-        for (Map.Entry<String, Citizen> item : citizens.entrySet()) {
-            if (passport.equals(item.getKey())) {
-                return item.getValue();
-            }
-        }
-        return null;
+        return citizens.get(passport);
     }
 }
