@@ -1,6 +1,6 @@
 package ru.job4j.tracker;
 
-public class Item implements Comparable<Item> {
+public class Item {
     private int id;
     private String name;
 
@@ -32,10 +32,5 @@ public class Item implements Comparable<Item> {
                 "\tid = " + id + System.lineSeparator() +
                 "\tname = \"" + name + "\""+ System.lineSeparator() +
                 "}";
-    }
-
-    @Override
-    public int compareTo(Item o) {
-        return 0;
     }
 }
