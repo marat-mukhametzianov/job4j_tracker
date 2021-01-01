@@ -23,11 +23,14 @@ public class UserTest {
 
     @Test
     public void ArrayListAsc() {
-        User odin = new User("Loki", 10);
+        User loki = new User("Loki", 10);
         User thor = new User("Thor", 5);
-        User loki = new User("Odin", 7);
+        User odin = new User("Odin", 7);
         List<User> users = Arrays.asList(odin, thor, loki);
         users.sort(new DescUser());
-
+        Iterator<User> iterator = users.iterator();
+        assertThat(iterator.next(), is(thor));
+        assertThat(iterator.next(), is(odin));
+        assertThat(iterator.next(), is(loki));
     }
 }
