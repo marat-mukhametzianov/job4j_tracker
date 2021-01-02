@@ -8,29 +8,30 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class UserTest {
+
     @Test
-    public void TreeAutomaticAsc() {
+    public void userAsc() {
         User odin = new User("Odin", 10);
         User thor = new User("Thor", 5);
         User loki = new User("Loki", 7);
-        Set<User> users = new TreeSet<>();
+        List<User> users = new ArrayList<>();
         users.add(odin);
         users.add(thor);
         users.add(loki);
-        Iterator<User> iterator = users.iterator();
-        assertThat(iterator.next(), is(loki));
+        Collections.sort(users);
+        assertThat(users.iterator().next().getName(), is("Loki"));
     }
 
     @Test
-    public void ArrayListAsc() {
-        User loki = new User("Loki", 10);
+    public void userDesc() {
+        User odin = new User("Odin", 10);
         User thor = new User("Thor", 5);
-        User odin = new User("Odin", 7);
-        List<User> users = Arrays.asList(odin, thor, loki);
-        users.sort(new DescUser());
-        Iterator<User> iterator = users.iterator();
-        assertThat(iterator.next(), is(thor));
-        assertThat(iterator.next(), is(odin));
-        assertThat(iterator.next(), is(loki));
+        User loki = new User("Loki", 7);
+        List<User> users = new ArrayList<>();
+        users.add(odin);
+        users.add(thor);
+        users.add(loki);
+        Collections.sort(users, Collections.reverseOrder());
+        assertThat(users.iterator().next().getName(), is("Thor"));
     }
 }
