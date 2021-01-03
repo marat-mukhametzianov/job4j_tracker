@@ -9,20 +9,6 @@ import static org.junit.Assert.*;
 
 public class CustomStringComparatorTest {
 
-    @Test (expected = IllegalArgumentException.class)
-    public void whenNullGenerateException() {
-        String left = null;
-        String right = "a";
-        new CustomStringComparator().compare(left, right);
-    }
-
-    @Test (expected = IllegalArgumentException.class)
-    public void whenEmptyGenerateException() {
-        String left = "";
-        String right = "a";
-        new CustomStringComparator().compare(left, right);
-    }
-
     @Test
     public void whenStringsAreEqualThenNought() {
         assertThat(new CustomStringComparator().compare("abc", "abc"), is(0));
