@@ -4,6 +4,12 @@ public class Item implements Comparable<Item> {
     private int id;
     private String name;
 
+    public Item() {}
+
+    public Item(String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
@@ -17,12 +23,6 @@ public class Item implements Comparable<Item> {
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public Item() {}
-
-    public Item(String name) {
         this.name = name;
     }
 

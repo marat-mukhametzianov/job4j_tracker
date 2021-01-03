@@ -3,9 +3,7 @@ package ru.job4j.collection.job.comparators;
 import org.junit.Test;
 import ru.job4j.collection.job.Job;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
