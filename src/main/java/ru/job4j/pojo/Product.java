@@ -29,18 +29,26 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "name='" + name + '\'' +
-                ", count=" + count +
+        return "Product{"
+                +
+                "name='" + name + '\''
+                +
+                ", count=" + count
+                +
                 '}';
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Product product = (Product) o;
-        return count == product.count &&
+        return count == product.count
+                &&
                 Objects.equals(name, product.name);
     }
 

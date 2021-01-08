@@ -1,4 +1,4 @@
-package ru.job4j.oop.Triangle;
+package ru.job4j.oop.triangle;
 
 public class Triangle {
     private Point a;
@@ -22,14 +22,15 @@ public class Triangle {
     }
 
     public double halfPerimeter() {
-        return (this.abLength + this.acLength + this.bcLength)/2;
+        return (this.abLength + this.acLength + this.bcLength) / 2;
     }
 
     public double area() {
         double result = -1;
         if (this.exists(this.abLength, this.acLength, this.bcLength)) {
             double perimeter = this.halfPerimeter();
-            result = Math.sqrt(perimeter * (perimeter - this.abLength) * (perimeter - this.acLength) * (perimeter - this.bcLength));
+            result = Math.sqrt(perimeter * (perimeter - this.abLength)
+                    * (perimeter - this.acLength) * (perimeter - this.bcLength));
         }
         return result;
     }

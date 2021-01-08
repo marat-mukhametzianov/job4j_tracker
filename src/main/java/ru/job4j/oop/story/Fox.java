@@ -1,9 +1,9 @@
-package ru.job4j.oop.Story;
+package ru.job4j.oop.story;
 
-public class Wolf {
+public class Fox {
     private String name;
 
-    public void Name(String name) {
+    public void name(String name) {
         this.name = name;
     }
 

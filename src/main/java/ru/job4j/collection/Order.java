@@ -17,16 +17,23 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "number = " + number + System.lineSeparator() +
-                "name = " + name + System.lineSeparator() +
+        return "Order{"
+                +
+                "number = " + number + System.lineSeparator()
+                +
+                "name = " + name + System.lineSeparator()
+                +
                 "}";
     }
 
     @Override
     public boolean equals(Object object) {
-        if ((object == null) || (object.getClass() != this.getClass())) return false;
-        if (this == object) return true;
+        if ((object == null) || (object.getClass() != this.getClass())) {
+            return false;
+        }
+        if (this == object) {
+            return true;
+        }
         Order order = (Order) object;
         return this.name.equals(order.name) && this.number.equals(order.number);
     }

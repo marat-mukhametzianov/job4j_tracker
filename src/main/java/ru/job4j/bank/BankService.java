@@ -8,13 +8,13 @@ import java.util.Map;
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
-    public void addUser (User user) {
+    public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
     }
 
-    public void addAccount (String passport, Account account) {
+    public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if ( user != null) {
+        if (user != null) {
             List<Account> accounts = users.get(user);
             if (!accounts.contains(account)) {
                 accounts.add(account);
@@ -22,7 +22,7 @@ public class BankService {
         }
     }
 
-    public User findByPassport (String passport) {
+    public User findByPassport(String passport) {
         for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 return user;
@@ -31,7 +31,7 @@ public class BankService {
         return null;
     }
 
-    public Account findByRequisite (String passport, String requisite) {
+    public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
             List<Account> accounts = users.get(user);
@@ -44,7 +44,7 @@ public class BankService {
         return null;
     }
 
-    public boolean moneyTransfer (String sourcePassport,
+    public boolean moneyTransfer(String sourcePassport,
                                   String sourceRequisite,
                                   String destinationPassport,
                                   String destinationRequisite,

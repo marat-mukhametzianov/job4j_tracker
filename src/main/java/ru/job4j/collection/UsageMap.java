@@ -9,7 +9,9 @@ public class UsageMap {
         map.put("johnsmith@com.com", "John Smith");
         map.put("amandamint@com.com", "Amanda Mint");
         for (Map.Entry<String, String> entry : map.entrySet()) {
-            System.out.printf("Key is %s, value is %s" + System.lineSeparator(), entry.getKey(), entry.getValue());
+            System.out.printf("Key is %s, value is %s"
+                    +
+                    System.lineSeparator(), entry.getKey(), entry.getValue());
         }
     }
 }

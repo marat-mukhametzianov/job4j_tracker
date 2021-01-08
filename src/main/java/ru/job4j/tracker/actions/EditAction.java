@@ -24,7 +24,8 @@ public class EditAction implements IUserAction {
         String name = input.requestStringInput("Enter new item's name:");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            out.println("The element with ID " + id + " has been updated." + System.lineSeparator());
+            out.println("The element with ID "
+                    + id + " has been updated." + System.lineSeparator());
         } else {
             out.println("Apparently, there is no element with the ID.");
         }

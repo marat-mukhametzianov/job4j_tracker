@@ -4,7 +4,7 @@ public class Book {
     private String name;
     private short pageNumber;
 
-    public Book() {}
+    public Book() { }
 
     public Book(String name, short pageNumber) {
         this.name = name;

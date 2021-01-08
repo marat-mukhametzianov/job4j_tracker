@@ -6,7 +6,7 @@ import java.util.Map;
 public class PassportOffice {
     private HashMap<String, Citizen> citizens = new HashMap<>();
 
-    public boolean add (Citizen citizen) {
+    public boolean add(Citizen citizen) {
         boolean result = false;
         String passport = citizen.getPassport();
         if (!citizens.containsKey(passport)) {
@@ -16,7 +16,7 @@ public class PassportOffice {
         return result;
     }
 
-    public Citizen get (String passport) {
+    public Citizen get(String passport) {
         return citizens.get(passport);
     }
 }

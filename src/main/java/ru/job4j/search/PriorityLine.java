@@ -10,7 +10,7 @@ public class PriorityLine {
      * The position is determined by the priority field.
      * @param task is an object to add.
      */
-    public void put (Task task) {
+    public void put(Task task) {
         int index = 0;
         for (Task item : tasks) {
             if (task.getPriority() < item.getPriority()) {
@@ -21,7 +21,7 @@ public class PriorityLine {
         this.tasks.add(index, task);
     }
 
-    public Task take () {
+    public Task take() {
         return tasks.poll();
     }
 

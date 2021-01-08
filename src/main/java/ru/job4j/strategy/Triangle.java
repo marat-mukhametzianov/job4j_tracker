@@ -4,8 +4,10 @@ public class Triangle implements IShape {
     @Override
     public String draw() {
         String s = System.lineSeparator();
-        return "  ^  " + s +
-               " /  \\" + s +
+        return "  ^  " + s
+                +
+               " /  \\" + s
+                +
                "/____\\";
     }
 

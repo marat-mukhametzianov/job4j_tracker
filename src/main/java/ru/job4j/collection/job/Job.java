@@ -21,9 +21,12 @@ public class Job implements Comparable<Job> {
 
     @Override
     public String toString() {
-        return System.lineSeparator() + "Job{" + System.lineSeparator() +
-                    "\tname = " + name + System.lineSeparator() +
-                    "\tpriority = " + priority + System.lineSeparator() +
+        return System.lineSeparator() + "Job{" + System.lineSeparator()
+                +
+                    "\tname = " + name + System.lineSeparator()
+                +
+                    "\tpriority = " + priority + System.lineSeparator()
+                +
                 "}" + System.lineSeparator();
     }
 
@@ -34,8 +37,12 @@ public class Job implements Comparable<Job> {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Job job = (Job) o;
         return priority == job.priority && Objects.equals(name, job.name);
     }

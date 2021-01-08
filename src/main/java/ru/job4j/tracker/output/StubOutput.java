@@ -7,7 +7,7 @@ public class StubOutput implements IOutput {
 
     @Override
     public void println(Object object) {
-        if (object != null){
+        if (object != null) {
             stringBuilder.append(object.toString());
         } else {
             stringBuilder.append("null");

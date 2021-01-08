@@ -13,7 +13,7 @@ public class Dendy {
             System.out.println("3. Exit.");
             System.out.println("Select the menu item");
             int selected = Integer.valueOf(input.nextLine());
-            switch (selected){
+            switch (selected) {
                 case 3:
                     System.out.println("Game over!");
                     run = false;

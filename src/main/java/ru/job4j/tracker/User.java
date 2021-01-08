@@ -11,18 +11,28 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {return id;}
+    public int getId() {
+        return id;
+    }
 
-    public String getUsername() {return username;}
+    public String getUsername() {
+        return username;
+    }
 
-    public String getPassword() {return password;}
+    public String getPassword() {
+        return password;
+    }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+        return "User{"
+                +
+                "id=" + id
+                +
+                ", username='" + username + '\''
+                +
+                ", password='" + password + '\''
+                +
                 '}';
     }
 }

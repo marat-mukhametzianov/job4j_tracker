@@ -16,7 +16,8 @@ public class ValidInputTest {
         IOutput output = new StubOutput();
         IInput validInput = new ValidInput(output, input);
         int selected = validInput.requestIntInput("Select:");
-        assertThat(output.toString(), is("Try to input the valid number." + System.lineSeparator()));
+        assertThat(output.toString(),
+                is("Try to input the valid number." + System.lineSeparator()));
     }
 
     @Test
@@ -36,7 +37,8 @@ public class ValidInputTest {
         IOutput output = new StubOutput();
         IInput validInput = new ValidInput(output, input);
         int selected = validInput.requestIntInput("Select:");
-        assertThat(output.toString(), is("Try to input the valid number." + System.lineSeparator()));
+        assertThat(output.toString(),
+                is("Try to input the valid number." + System.lineSeparator()));
         assertThat(selected, is(1));
     }
 }

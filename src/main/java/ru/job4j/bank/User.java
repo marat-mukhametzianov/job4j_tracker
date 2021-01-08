@@ -1,5 +1,7 @@
 package ru.job4j.bank;
 
+import java.util.Objects;
+
 public class User {
     private String passport;
     private String username;
@@ -26,10 +28,19 @@ public class User {
     }
 
     @Override
-    public boolean equals (Object object) {
-        if (object == this) return true;
-        if (object == null || object.getClass() != this.getClass()) return false;
+    public boolean equals(Object object) {
+        if (object == this) {
+            return true;
+        }
+        if (object == null || object.getClass() != this.getClass()) {
+            return false;
+        }
         User user = (User) object;
         return user.passport.equals(this.passport);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(passport);
     }
 }

@@ -12,11 +12,11 @@ public class Fract {
     }
 
     public static int calc(int n) {
-        if(n < 0) {
+        if (n < 0) {
             throw new IllegalArgumentException("n less than 0. Should use a positive number.");
         }
         int result = 1;
-        for(int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++) {
             result *= i;
         }
         return result;

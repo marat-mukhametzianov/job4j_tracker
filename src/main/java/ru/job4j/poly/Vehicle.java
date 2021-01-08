@@ -1,7 +1,10 @@
 package ru.job4j.poly;
 
 public interface Vehicle {
-    void Drive();
-    void Passengers(byte quantity);
-    double Cost(double gas);
+
+    void drive();
+
+    void passengers(byte quantity);
+
+    double cost(double gas);
 }

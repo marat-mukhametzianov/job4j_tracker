@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Paint {
     public void draw(IShape shape) {
-        System.out.println(shape.draw());;
+        System.out.println(shape.draw());
     }
 
     public static void main(String[] args) {

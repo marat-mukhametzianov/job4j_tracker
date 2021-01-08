@@ -14,8 +14,8 @@ public class TrackerSingleTest {
 
     @Test
     public void whenCreateSingletoneTwo() {
-        TrackerSingleTwo one = TrackerSingleTwo.getINSTANCE();
-        TrackerSingleTwo two = TrackerSingleTwo.getINSTANCE();
+        TrackerSingleTwo one = TrackerSingleTwo.getInstance();
+        TrackerSingleTwo two = TrackerSingleTwo.getInstance();
         assertSame(one, two);
     }
 

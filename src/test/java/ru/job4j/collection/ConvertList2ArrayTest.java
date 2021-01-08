@@ -15,8 +15,8 @@ public class ConvertList2ArrayTest {
         ConvertList2Array convertList2Array = new ConvertList2Array();
         int[][] result = convertList2Array.toArray(list, 3);
         int[][] expected = {
-            {1, 2, 3,},
-            {4, 5, 6,},
+            {1, 2, 3, },
+            {4, 5, 6, },
             {7, 0, 0}
         };
         assertThat(result, is(expected));

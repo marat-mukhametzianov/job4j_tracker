@@ -1,15 +1,15 @@
-package ru.job4j.oop.Story;
+package ru.job4j.oop.story;
 
 public class BallStory {
     public static void main(String[] args) {
         Ball ball = new Ball();
-        ball.Name("Roller");
+        ball.name("Roller");
         Hare hare = new Hare();
-        hare.Name("Honey-bunny");
+        hare.name("Honey-bunny");
         Wolf wolf = new Wolf();
-        wolf.Name("Wolfenstain");
+        wolf.name("Wolfenstain");
         Fox fox = new Fox();
-        fox.Name("Foxy");
+        fox.name("Foxy");
         wolf.tryEat(ball);
         fox.tryEat(ball);
         hare.tryEat(ball);

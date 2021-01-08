@@ -14,8 +14,10 @@ public class College {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
         String formattedEnrollmentDate = student.getEnrollmentDate().format(formatter);
         System.out.printf(
-                "Student %s %s ibn %s.\n" +
-                "Group is %s, " +
+                "Student %s %s ibn %s.\n"
+                +
+                "Group is %s, "
+                +
                 "date of the enrollment is %s.",
                 student.getName(),
                 student.getSurname(),

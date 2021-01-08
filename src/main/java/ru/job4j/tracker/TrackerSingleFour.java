@@ -7,13 +7,13 @@ public class TrackerSingleFour {
     private int ids = 1;
     private int size = 0;
 
+    private TrackerSingleFour() { }
+
     public static TrackerSingleFour getInstance() {
         return TrackerSingleFourHolder.INSTANCE;
     }
 
-    private TrackerSingleFour() { }
-
-    private static final class TrackerSingleFourHolder{
+    private static final class TrackerSingleFourHolder {
         private static final TrackerSingleFour INSTANCE = new TrackerSingleFour();
     }
 

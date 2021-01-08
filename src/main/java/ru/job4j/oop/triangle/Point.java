@@ -1,4 +1,4 @@
-package ru.job4j.oop.Triangle;
+package ru.job4j.oop.triangle;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;

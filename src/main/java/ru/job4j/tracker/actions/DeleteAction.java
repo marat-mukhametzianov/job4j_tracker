@@ -21,7 +21,8 @@ public class DeleteAction implements IUserAction {
         out.println("=== Deleting in progress ====");
         int id = input.requestIntInput("Enter the deleted item's ID:");
         if (tracker.delete(id)) {
-            out.println("The element with ID " +id + " has been deleted." + System.lineSeparator());
+            out.println("The element with ID " + id
+                    + " has been deleted." + System.lineSeparator());
         } else {
             out.println("Apparently, there is no element with the ID.");
         }

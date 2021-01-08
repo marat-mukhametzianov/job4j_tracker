@@ -4,7 +4,7 @@ public class Item implements Comparable<Item> {
     private int id;
     private String name;
 
-    public Item() {}
+    public Item() { }
 
     public Item(String name) {
         this.name = name;
@@ -28,9 +28,12 @@ public class Item implements Comparable<Item> {
 
     @Override
     public String toString() {
-        return "Item {" +System.lineSeparator() +
-                "\tid = " + id + System.lineSeparator() +
-                "\tname = \"" + name + "\""+ System.lineSeparator() +
+        return "Item {" + System.lineSeparator()
+                +
+                "\tid = " + id + System.lineSeparator()
+                +
+                "\tname = \"" + name + "\"" + System.lineSeparator()
+                +
                 "}";
     }
 

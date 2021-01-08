@@ -25,11 +25,15 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         List<IUserAction> actions = Arrays.asList(new ExitAction());
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Exit." + ns +
-                                            "Wrong selected item. It can be 0 through " + (actions.size() - 1) + ns +
-                                            "MENU." + ns +
-                                            "0. Exit." + ns
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                        "0. Exit." + ns
+                        +
+                        "Wrong selected item. It can be 0 through " + (actions.size() - 1) + ns
+                        +
+                        "MENU." + ns
+                        +
+                        "0. Exit." + ns
                                         ));
     }
 
@@ -41,13 +45,20 @@ public class StartUITest {
         IOutput output = new StubOutput();
         List<IUserAction> actions = Arrays.asList(new CreateAction(output), new ExitAction());
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Exit." + ns +
-                                            "=== Creating a new item ====" + ns +
-                                            "Item has been added successfully." + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Exit." + ns
+                        +
+                                            "=== Creating a new item ====" + ns
+                        +
+                                            "Item has been added successfully." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
                                             "1. Exit." + ns
                                         ));
     }
@@ -59,7 +70,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         IOutput out = new StubOutput();
         List<IUserAction> actions = Arrays.asList(new ExitAction());
-        new StartUI(out).init(input, tracker,actions);
+        new StartUI(out).init(input, tracker, actions);
         assertThat(out.toString(), is("MENU." + ns + "0. Exit." + ns));
     }
 
@@ -68,27 +79,48 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1", "2"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new CreateAction(output), new ShowAllItemsAction(output), new ExitAction());
+        List<IUserAction> actions = Arrays.asList(
+                new CreateAction(output),
+                new ShowAllItemsAction(output),
+                new ExitAction());
         Tracker tracker = new Tracker();
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Show all items;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Creating a new item ====" + ns +
-                                            "Item has been added successfully." + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Show all items;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== All available items ====" + ns +
-                                            "Item {" + ns +
-                                                    "\tid = 1" + ns +
-                                                    "\tname = \"item_1\"" + ns +
-                                                    "}" + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Show all items;" + ns +
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Show all items;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Creating a new item ====" + ns
+                        +
+                                            "Item has been added successfully." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Show all items;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== All available items ====" + ns
+                        +
+                                            "Item {" + ns
+                        +
+                                                    "\tid = 1" + ns
+                        +
+                                                    "\tname = \"item_1\"" + ns
+                        +
+                                                    "}" + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Show all items;" + ns
+                        +
                                             "2. Exit." + ns
                                         ));
     }
@@ -101,13 +133,20 @@ public class StartUITest {
         List<IUserAction> actions = Arrays.asList(new ShowAllItemsAction(output), new ExitAction());
         Tracker tracker = new Tracker();
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Show all items;" + ns +
-                                            "1. Exit." + ns +
-                                            "=== All available items ====" + ns +
-                                            "There are not available records." + ns +
-                                            "MENU." + ns +
-                                            "0. Show all items;" + ns +
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Show all items;" + ns
+                        +
+                                            "1. Exit." + ns
+                        +
+                                            "=== All available items ====" + ns
+                        +
+                                            "There are not available records." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Show all items;" + ns
+                        +
                                             "1. Exit." + ns
                                         ));
     }
@@ -118,37 +157,70 @@ public class StartUITest {
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
         Tracker tracker = new Tracker();
-        List<IUserAction> actions = Arrays.asList(new CreateAction(output), new FindItemsByNameAction(output), new ExitAction());
-        new StartUI(output).init(input, tracker,actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find items by name;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Creating a new item ====" + ns +
-                                            "Item has been added successfully." + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find items by name;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Creating a new item ====" + ns +
-                                            "Item has been added successfully." + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find items by name;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Detected items ====" + ns +
-                                            "Item {" + ns +
-                                            "\tid = 1" + ns +
-                                            "\tname = \"item_1\"" + ns +
-                                            "}" + ns +
-                                            "Item {" + ns +
-                                            "\tid = 2" + ns +
-                                            "\tname = \"item_1\"" + ns +
-                                            "}" + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find items by name;" + ns +
+        List<IUserAction> actions = Arrays.asList(
+                new CreateAction(output),
+                new FindItemsByNameAction(output),
+                new ExitAction());
+        new StartUI(output).init(input, tracker, actions);
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find items by name;" + ns
+                        +
                                             "2. Exit." + ns
+                        +
+                                            "=== Creating a new item ====" + ns
+                        +
+                                            "Item has been added successfully." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find items by name;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Creating a new item ====" + ns
+                        +
+                                            "Item has been added successfully." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find items by name;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Detected items ====" + ns
+                        +
+                                            "Item {" + ns
+                        +
+                                            "\tid = 1" + ns
+                        +
+                                            "\tname = \"item_1\"" + ns
+                        +
+                                            "}" + ns
+                        +
+                                            "Item {" + ns
+                        +
+                                            "\tid = 2" + ns
+                        +
+                                            "\tname = \"item_1\"" + ns
+                        +
+                                            "}" + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find items by name;" + ns
+                        +
+                                            "2. Exit."
+                        +
+                        ns
                                         ));
     }
 
@@ -157,17 +229,28 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new FindItemsByNameAction(output), new ExitAction());
+        List<IUserAction> actions = Arrays.asList(
+                new FindItemsByNameAction(output),
+                new ExitAction());
         Tracker tracker = new Tracker();
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Find items by name;" + ns +
-                                            "1. Exit." + ns +
-                                            "=== Detected items ====" + ns +
-                                            "Apparently, there are no elements with the name." + ns +
-                                            "MENU." + ns +
-                                            "0. Find items by name;" + ns +
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Find items by name;" + ns
+                        +
                                             "1. Exit." + ns
+                        +
+                                            "=== Detected items ====" + ns
+                        +
+                                            "Apparently, there are no elements with the name." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Find items by name;" + ns
+                        +
+                                            "1. Exit."
+                        +
+                        ns
                                         ));
     }
 
@@ -176,27 +259,48 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1", "1", "2"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new CreateAction(output), new FindItemByIdAction(output), new ExitAction());
+        List<IUserAction> actions = Arrays.asList(
+                new CreateAction(output),
+                new FindItemByIdAction(output),
+                new ExitAction());
         Tracker tracker = new Tracker();
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find an item by ID;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Creating a new item ====" + ns +
-                                            "Item has been added successfully." + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find an item by ID;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Detected element ====" + ns +
-                                            "Item {" + ns +
-                                            "\tid = 1" + ns +
-                                            "\tname = \"item_1\"" + ns +
-                                            "}" + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find an item by ID;" + ns +
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find an item by ID;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Creating a new item ====" + ns
+                        +
+                                            "Item has been added successfully." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find an item by ID;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Detected element ====" + ns
+                        +
+                                            "Item {" + ns
+                        +
+                                            "\tid = 1" + ns
+                        +
+                                            "\tname = \"item_1\"" + ns
+                        +
+                                            "}" + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find an item by ID;" + ns
+                        +
                                             "2. Exit." + ns
                                         ));
     }
@@ -206,24 +310,42 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1", "0", "2"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new CreateAction(output), new FindItemByIdAction(output), new ExitAction());
+        List<IUserAction> actions = Arrays.asList(
+                new CreateAction(output),
+                new FindItemByIdAction(output),
+                new ExitAction());
         Tracker tracker = new Tracker();
         new StartUI(output).init(input, tracker, actions);
-        assertThat(output.toString(), is(   "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find an item by ID;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Creating a new item ====" + ns +
-                                            "Item has been added successfully." + ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find an item by ID;" + ns +
-                                            "2. Exit." + ns +
-                                            "=== Detected element ====" + ns +
-                                            "Apparently, there is no element with the ID."+ ns +
-                                            "MENU." + ns +
-                                            "0. Create a new item;" + ns +
-                                            "1. Find an item by ID;" + ns +
+        assertThat(output.toString(), is("MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find an item by ID;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Creating a new item ====" + ns
+                        +
+                                            "Item has been added successfully." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find an item by ID;" + ns
+                        +
+                                            "2. Exit." + ns
+                        +
+                                            "=== Detected element ====" + ns
+                        +
+                                            "Apparently, there is no element with the ID." + ns
+                        +
+                                            "MENU." + ns
+                        +
+                                            "0. Create a new item;" + ns
+                        +
+                                            "1. Find an item by ID;" + ns
+                        +
                                             "2. Exit." + ns
                                         ));
     }

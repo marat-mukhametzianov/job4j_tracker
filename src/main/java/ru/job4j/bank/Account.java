@@ -29,8 +29,12 @@ public class Account {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || object.getClass() == this.getClass()) return false;
+        if (this == object) {
+            return true;
+        }
+        if (object == null || object.getClass() == this.getClass()) {
+            return false;
+        }
         Account account = (Account) object;
         return Objects.equals(account.requisite, this.requisite);
     }

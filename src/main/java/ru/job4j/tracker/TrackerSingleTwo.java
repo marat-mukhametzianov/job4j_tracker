@@ -3,18 +3,18 @@ package ru.job4j.tracker;
 import java.util.Arrays;
 
 public class TrackerSingleTwo {
-    private static TrackerSingleTwo INSTANCE;
+    private static TrackerSingleTwo instance;
     private final Item[] items = new Item[100];
     private int ids = 1;
     private int size = 0;
 
     private TrackerSingleTwo() { }
 
-    public static TrackerSingleTwo getINSTANCE() {
-        if (INSTANCE == null) {
-            INSTANCE = new TrackerSingleTwo();
+    public static TrackerSingleTwo getInstance() {
+        if (instance == null) {
+            instance = new TrackerSingleTwo();
         }
-        return INSTANCE;
+        return instance;
     }
 
     public Item add(Item item) {
