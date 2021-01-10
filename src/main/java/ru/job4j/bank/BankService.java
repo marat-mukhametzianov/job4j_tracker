@@ -16,7 +16,7 @@ public class BankService {
 
     /**
      * This method adds received instance of the User class into HashMap if there is no
-     * matching element. As a value is used an empty ArrayLi<Account>.
+     * matching element. As a value is used an empty ArrayLis of Account.
      * @param user is an instance of the User class to be added into HashMap
      */
     public void addUser(User user) {
