@@ -45,7 +45,7 @@ public class Departments {
      */
     public static void sortAsc(List<String> orgs) {
         Collections.sort(orgs);
-        for(String item : orgs) {
+        for (String item : orgs) {
             System.out.println(item);
         }
     }
@@ -56,7 +56,7 @@ public class Departments {
      */
     public static void sortDesc(List<String> orgs) {
         Collections.sort(orgs, new DescComparator());
-        for(String item : orgs) {
+        for (String item : orgs) {
             System.out.println(item);
         }
     }

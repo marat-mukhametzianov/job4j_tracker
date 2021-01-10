@@ -8,7 +8,7 @@ public class DescComparator implements Comparator<String> {
     public int compare(String first, String second) {
         if (first.split("/")[0].equals(second.split("/")[0])) {
             return first.compareTo(second);
-        }else {
+        } else {
             return second.compareTo(first);
         }
     }
