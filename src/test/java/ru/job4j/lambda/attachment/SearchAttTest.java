@@ -73,7 +73,7 @@ public class SearchAttTest {
                 return result;
             }
         };
-        List<Attachment> output = SearchAtt.simpleFilter(input,name);
+        List<Attachment> output = SearchAtt.universalFilter(input,name);
         assertThat(output.get(0).getName(), is("Three"));
     }
 }

@@ -31,10 +31,4 @@ public class SearchAtt {
             Function <List<Attachment>, List<Attachment>> action) {
         return action.apply(initialList);
     }
-
-    public static List<Attachment> simpleFilter(
-            List<Attachment> initialList,
-            Function <List<Attachment>, List<Attachment>> action) {
-        return action.apply(initialList);
-    }
 }
