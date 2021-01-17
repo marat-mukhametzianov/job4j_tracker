@@ -11,7 +11,6 @@ public class RefMethod {
         names.forEach(rule);
     }
 
-
     public static void cutOff(String initialString) {
         if(initialString.length() > 10) {
             System.out.println(initialString.substring(0, 10) + "...");
