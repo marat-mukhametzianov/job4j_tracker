@@ -14,6 +14,7 @@ public class Test {
             System.out.println("Lambda starts");
             return left.compareTo(right);
         };
+
         names.sort(comparator);
         names = Arrays.asList("One", "Two");
         names.sort(comparator);
