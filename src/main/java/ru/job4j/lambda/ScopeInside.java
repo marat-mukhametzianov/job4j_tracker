@@ -1,4 +1,4 @@
-package ru.job4j.lambda.attachment;
+package ru.job4j.lambda;
 
 import java.util.function.Supplier;
 

@@ -1,5 +1,7 @@
 package ru.job4j.lambda.attachment;
 
+import ru.job4j.lambda.attachment.Attachment;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
