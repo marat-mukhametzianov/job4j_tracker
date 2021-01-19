@@ -13,6 +13,6 @@ public class PhoneDictionaryTest {
     public void whenFindByName() {
         PhoneDictionary phoneDictionary = new PhoneDictionary();
         phoneDictionary.add(new Person("Petr", "Arsentev", "Bryansk", "534872"));
-        assertThat(phoneDictionary.find("Petr").get(0).getSurname(), is("Arsentev"));
+        assertThat(phoneDictionary.find("Bryansk").get(0).getSurname(), is("Arsentev"));
     }
 }
