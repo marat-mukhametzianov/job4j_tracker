@@ -23,7 +23,7 @@ public class PhoneDictionary {
         Predicate<Person> compound = name.or(surname).or(address).or(phone);
         ArrayList<Person> result = new ArrayList<>();
         for (Person person : people) {
-            if (compound.test(person)){
+            if (compound.test(person)) {
                 result.add(person);
             }
         }

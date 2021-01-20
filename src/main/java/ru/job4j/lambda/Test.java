@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public class Test {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("One");
+        List<String> names = List.of("One");
         Comparator<String> comparator = (left, right) -> {
             System.out.println("Lambda starts");
             return left.compareTo(right);
@@ -24,12 +24,14 @@ public class Test {
                 System.out.println(s);
             }
         });
-        Function<String, Integer> instanceOfAnonymusClassImplementingInterface = new Function<String, Integer>() {
+        Function<String, Integer> instanceOfAnonymusClassImplementingInterface
+                = new Function<String, Integer>() {
             @Override
             public Integer apply(String inletData) {
                 return Integer.parseInt(inletData);
             }
         };
-        System.out.println(instanceOfAnonymusClassImplementingInterface.apply("10") + 20);
+        System.out.println(instanceOfAnonymusClassImplementingInterface
+                .apply("10") + 20);
     }
 }

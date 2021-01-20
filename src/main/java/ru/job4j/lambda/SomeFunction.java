@@ -7,7 +7,7 @@ import java.util.function.Function;
 public class SomeFunction {
     public List<Double> range(int start, int end, Function<Double, Double> func) {
         List<Double> result = new ArrayList<>();
-        for(double i = start; i <= end; i++) {
+        for (double i = start; i <= end; i++) {
             result.add(func.apply(i));
         }
         return result;
