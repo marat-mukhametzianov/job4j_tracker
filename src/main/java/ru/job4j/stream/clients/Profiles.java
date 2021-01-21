@@ -11,11 +11,10 @@ public class Profiles {
     }
 
     public List<Address> arrangeAndDistinct(List<Profile> profiles) {
-        List<Address> result = profiles.stream()
+        return profiles.stream()
                 .map(profile -> profile.getAddress())
                 .sorted(((o1, o2) -> o1.getCity().compareTo(o2.getCity())))
                 .distinct()
                 .collect(Collectors.toList());
-        return result;
     }
 }
