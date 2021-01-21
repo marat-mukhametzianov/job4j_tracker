@@ -17,27 +17,26 @@ public class ProfilesTest {
     @Before
     public void setup() {
         addresses = List.of(
-                new Address(
-                        "New York",
-                        "1st avenue",
-                        700,
-                        1
-                ),
-                new Address(
-                        "Philadelphia",
-                        "Sanford",
-                        700,
-                        4
-                )
+                new Address("Washington", "Lincoln", 1, 1),
+                new Address("New York", "1st avenue", 700, 1),
+                new Address("Philadelphia", "Sanford", 700, 4),
+                new Address("New York", "1st avenue", 700, 1),
+                new Address("Philadelphia", "Sanford", 700, 4),
+                new Address("New York", "1st avenue", 700, 1)
         );
-        profiles.add(new Profile(addresses.get(0)));
-        profiles.add(new Profile(addresses.get(1)));
+        for (Address item : addresses) {
+            profiles.add(new Profile(item));
+        }
     }
 
     @Test
     public void collect() {
-        Function<Profile, Address> rule = profile -> profile.getAddress();
-        List<Address> result = new Profiles().collect(profiles, rule);
-        assertThat(result, is(addresses));
+        List<Address> result = new Profiles().arrangeAndDistinct(profiles);
+        List<Address> expected = List.of(
+                new Address("New York", "1st avenue", 700, 1),
+                new Address("Philadelphia", "Sanford", 700, 4),
+                new Address("Washington", "Lincoln", 1, 1)
+        );
+        assertThat(result, is(expected));
     }
 }
