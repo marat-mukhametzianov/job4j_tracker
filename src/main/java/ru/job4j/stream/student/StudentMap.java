@@ -6,18 +6,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StudentMap {
-    public static void main(String[] args) {
-        List<Student> students = Arrays.asList(
-                new Student(10, "Smith"),
-                new Student(20, "Fox"),
-                new Student(30, "Tocci")
-        );
-        Map studentMap = students.stream()
+    public Map modify(List<Student> students) {
+        return students.stream()
                 .collect(Collectors.toMap(
                         student -> student.getSurname(),
-                        student -> student
+                        student -> student,
+                        (one, two) -> one
                 ));
-        studentMap.forEach((k, v) ->
-                System.out.println("The key " + k + ", the value " + v));
     }
 }
