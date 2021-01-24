@@ -23,4 +23,15 @@ public class StudentMapTest {
         assertThat(result.get("Fox"), is(new Student(20, "Fox")));
         assertThat(result.size(), is(3));
     }
+
+    @Test
+    public void levelOfTest() {
+        List<Student> initialList = Arrays.asList(
+                new Student(10, "Ten"),
+                null,
+                new Student(100, "Hundred")
+        );
+        List<Student> result = StudentLevel.levelOf(initialList, 50);
+        assertThat(result.get(0), is(new Student(100, "Hundred")));
+    }
 }
