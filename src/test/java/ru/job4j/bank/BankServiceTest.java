@@ -2,6 +2,8 @@ package ru.job4j.bank;
 
 import org.junit.Test;
 
+import java.util.Optional;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.core.Is.is;
 
@@ -22,7 +24,12 @@ public class BankServiceTest {
         Account account = new Account("1", 100.5);
         service.addUser(user);
         service.addAccount("12345", account);
-        assertThat(service.findByRequisite("12345", "1").getBalance(), is(100.5));
+        assertThat(
+                service.findByRequisite("12345", "1")
+                        .get()
+                        .getBalance(),
+                is(100.5)
+        );
     }
 
     @Test
@@ -39,8 +46,8 @@ public class BankServiceTest {
         BankService service = new BankService();
         User user = new User("12345", "Name");
         service.addUser(user);
-        User expected = service.findByPassport("12345");
-        assertThat(expected, is(user));
+        Optional<User> expected = service.findByPassport("12345");
+        assertThat(expected.get(), is(user));
     }
 
     @Test
@@ -48,8 +55,8 @@ public class BankServiceTest {
         BankService service = new BankService();
         User user = new User("12345", "Name");
         service.addUser(user);
-        User expected = service.findByPassport("1");
-        assertNull(expected);
+        Optional<User> expected = service.findByPassport("1");
+        assertTrue(expected.isEmpty());
     }
 
     @Test
@@ -58,7 +65,12 @@ public class BankServiceTest {
         User user = new User("12345", "Name");
         service.addUser(user);
         service.addAccount("12345", new Account("10", 100D));
-        assertThat(service.findByRequisite("12345", "10").getBalance(), is(100D));
+        assertThat(
+                service.findByRequisite("12345", "10")
+                        .get()
+                        .getBalance(),
+                is(100D)
+        );
     }
 
     @Test
