@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 public class RefMethod {
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("0123456789", "01234567890123456789");
+        List<String> names = List.of("0123456789", "01234567890123456789");
         Consumer<String> rule = RefMethod::cutOff;
         names.forEach(rule);
     }

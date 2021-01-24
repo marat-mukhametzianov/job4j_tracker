@@ -14,7 +14,7 @@ public class OrderConvertTest {
     @Test
     public void process() {
         OrderConvert converter = new OrderConvert();
-        List<Order> orders = Arrays.asList(new Order("one", "1"), new Order("two", "2"));
+        List<Order> orders = List.of(new Order("one", "1"), new Order("two", "2"));
         HashMap<String, Order> result = converter.process(orders);
         HashMap<String, Order> expected = new HashMap<String, Order>();
         expected.put("1", new Order("one", "1"));

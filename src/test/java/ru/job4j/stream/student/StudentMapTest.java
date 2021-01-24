@@ -13,7 +13,7 @@ public class StudentMapTest {
 
     @Test
     public void modify() {
-        List<Student> students = Arrays.asList(
+        List<Student> students = List.of(
                 new Student(10, "Smith"),
                 new Student(20, "Fox"),
                 new Student(30, "Tocci"),
@@ -26,9 +26,8 @@ public class StudentMapTest {
 
     @Test
     public void levelOfTest() {
-        List<Student> initialList = Arrays.asList(
+        List<Student> initialList = List.of(
                 new Student(10, "Ten"),
-                null,
                 new Student(100, "Hundred")
         );
         List<Student> result = StudentLevel.levelOf(initialList, 50);

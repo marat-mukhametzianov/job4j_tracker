@@ -16,7 +16,7 @@ public class Test {
         };
 
         names.sort(comparator);
-        names = Arrays.asList("One", "Two");
+        names = List.of("One", "Two");
         names.sort(comparator);
         names.forEach(new Consumer<String>() {
             @Override

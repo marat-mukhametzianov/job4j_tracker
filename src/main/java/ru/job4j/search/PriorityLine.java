@@ -18,8 +18,8 @@ public class PriorityLine {
      * @param task is an instance of the Task class, and is going to be added into LinkedList.
      */
     public void put(Task task) {
-        int index = 0;
-        for (Task item : tasks) {
+        var index = 0;
+        for (var item : tasks) {
             if (task.getPriority() < item.getPriority()) {
                 break;
             }

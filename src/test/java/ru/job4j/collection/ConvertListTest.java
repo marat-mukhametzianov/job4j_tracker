@@ -17,7 +17,7 @@ public class ConvertListTest {
         List<int[]> initialList = new ArrayList<>();
         initialList.add(new int[] {1});
         initialList.add(new int[] {2, 3});
-        List<Integer> result = Arrays.asList(1, 2, 3);
+        List<Integer> result = List.of(1, 2, 3);
         assertThat(result, is(converter.convert(initialList)));
     }
 }

@@ -14,7 +14,7 @@ public class SearchAttTest {
 
     @Test
     public void universalFilterSize() {
-        List<Attachment> input = Arrays.asList(
+        List<Attachment> input = List.of(
                 new Attachment("One", 50),
                 new Attachment("Two", 100),
                 new Attachment("Three", 101)
@@ -25,7 +25,7 @@ public class SearchAttTest {
 
     @Test
     public void universalFilterName() {
-        List<Attachment> input = Arrays.asList(
+        List<Attachment> input = List.of(
                 new Attachment("One", 50),
                 new Attachment("bug", 100),
                 new Attachment("bug", 101)

@@ -40,7 +40,7 @@ public class AttachmentSort {
      * @param prompt is a string to be a caption.
      */
     private static void output(Comparator comparator, String prompt) {
-        List<Attachment> attachments = Arrays.asList(
+        List<Attachment> attachments = List.of(
                 new Attachment("image_1", 100),
                 new Attachment("image_2", 34),
                 new Attachment("image_3", 13)

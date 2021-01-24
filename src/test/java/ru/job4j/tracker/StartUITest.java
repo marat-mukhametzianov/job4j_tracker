@@ -23,7 +23,7 @@ public class StartUITest {
         String[] menuItems = {"10", "0"};
         IInput input = new StubInput(menuItems);
         Tracker tracker = new Tracker();
-        List<IUserAction> actions = Arrays.asList(new ExitAction());
+        List<IUserAction> actions = List.of(new ExitAction());
         new StartUI(output).init(input, tracker, actions);
         assertThat(output.toString(), is("MENU." + ns
                         +
@@ -43,7 +43,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new CreateAction(output), new ExitAction());
+        List<IUserAction> actions = List.of(new CreateAction(output), new ExitAction());
         new StartUI(output).init(input, tracker, actions);
         assertThat(output.toString(), is("MENU." + ns
                         +
@@ -69,7 +69,7 @@ public class StartUITest {
         IInput input = new StubInput(answerData);
         Tracker tracker = new Tracker();
         IOutput out = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new ExitAction());
+        List<IUserAction> actions = List.of(new ExitAction());
         new StartUI(out).init(input, tracker, actions);
         assertThat(out.toString(), is("MENU." + ns + "0. Exit." + ns));
     }
@@ -79,7 +79,7 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1", "2"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(
+        List<IUserAction> actions = List.of(
                 new CreateAction(output),
                 new ShowAllItemsAction(output),
                 new ExitAction());
@@ -130,7 +130,7 @@ public class StartUITest {
         String[] answers = {"0", "1"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(new ShowAllItemsAction(output), new ExitAction());
+        List<IUserAction> actions = List.of(new ShowAllItemsAction(output), new ExitAction());
         Tracker tracker = new Tracker();
         new StartUI(output).init(input, tracker, actions);
         assertThat(output.toString(), is("MENU." + ns
@@ -157,7 +157,7 @@ public class StartUITest {
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
         Tracker tracker = new Tracker();
-        List<IUserAction> actions = Arrays.asList(
+        List<IUserAction> actions = List.of(
                 new CreateAction(output),
                 new FindItemsByNameAction(output),
                 new ExitAction());
@@ -229,7 +229,7 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(
+        List<IUserAction> actions = List.of(
                 new FindItemsByNameAction(output),
                 new ExitAction());
         Tracker tracker = new Tracker();
@@ -259,7 +259,7 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1", "1", "2"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(
+        List<IUserAction> actions = List.of(
                 new CreateAction(output),
                 new FindItemByIdAction(output),
                 new ExitAction());
@@ -310,7 +310,7 @@ public class StartUITest {
         String[] answers = {"0", "item_1", "1", "0", "2"};
         IInput input = new StubInput(answers);
         IOutput output = new StubOutput();
-        List<IUserAction> actions = Arrays.asList(
+        List<IUserAction> actions = List.of(
                 new CreateAction(output),
                 new FindItemByIdAction(output),
                 new ExitAction());

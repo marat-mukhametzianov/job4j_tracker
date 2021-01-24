@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class StreamAPI {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(
+        List<Integer> numbers = List.of(
                 7,
                 46,
                 -158,

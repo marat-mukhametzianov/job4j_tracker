@@ -11,8 +11,16 @@ public class PhoneDictionaryTest {
 
     @Test
     public void whenFindByName() {
-        PhoneDictionary phoneDictionary = new PhoneDictionary();
-        phoneDictionary.add(new Person("Petr", "Arsentev", "Bryansk", "534872"));
-        assertThat(phoneDictionary.find("Bryansk").get(0).getSurname(), is("Arsentev"));
+        var phoneDictionary = new PhoneDictionary();
+        phoneDictionary.add(new Person(
+                "Petr",
+                "Arsentev",
+                "Bryansk",
+                "534872")
+        );
+        assertThat(
+                phoneDictionary.find("Bryansk").get(0).getSurname(),
+                is("Arsentev")
+        );
     }
 }
