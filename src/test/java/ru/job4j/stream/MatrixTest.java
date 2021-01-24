@@ -12,7 +12,7 @@ public class MatrixTest {
 
     @Test
     public void convert() {
-        int[][] matrix = {
+        Integer[][] matrix = {
                 {1, 2},
                 {10, 20}
         };

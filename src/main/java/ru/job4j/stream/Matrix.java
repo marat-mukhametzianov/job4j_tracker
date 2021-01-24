@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Matrix {
-    public List<Integer> convert(int[][] matrix) {
-        return null;
+    public List<Integer> convert(Integer[][] matrix) {
+        return Arrays
+                .stream(matrix)
+                .flatMap(e -> Arrays.stream(e))
+                .collect(Collectors.toList());
     }
 }
