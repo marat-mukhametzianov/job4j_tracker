@@ -14,7 +14,7 @@ public class BankServiceTest {
         BankService service = new BankService();
         User user = new User("12345", "John Smith");
         service.addUser(user);
-        assertThat(service.findByPassport("12345"), is(user));
+        assertThat(service.findByPassport("12345").get(), is(user));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class BankServiceTest {
         User user = new User("12345", "John Smith");
         service.addUser(user);
         service.addAccount(user.getPassport(), new Account("1", 100.5));
-        assertNull(service.findByRequisite("123", "1"));
+        assertTrue(service.findByRequisite("123", "1").isEmpty());
     }
 
     @Test
